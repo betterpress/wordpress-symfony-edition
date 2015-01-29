@@ -1,0 +1,12 @@
+{
+    "name": "adamquaile/wp-medic",
+    "require": {
+        "johnpbloch/wordpress": "~4.1"
+    },
+    "authors": [
+        {
+            "name": "Adam Quaile",
+            "email": "adamquaile@gmail.com"
+        }
+    ]
+}
