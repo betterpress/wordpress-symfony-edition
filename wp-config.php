@@ -6,11 +6,12 @@ $yaml = new \Symfony\Component\Yaml\Yaml();
 $config = $yaml->parse(__DIR__ . '/config/parameters.yml');
 
 
-$application = new AdamQuaile\Medic\Application(
+global $wpApplication;
+$wpApplication = new AdamQuaile\Medic\Application(
 	new \AdamQuaile\Medic\Bridge\Php\Constants\PhpConstantManager(),
 	$config,
-	__DIR__ . '/wordpress'
+	__DIR__
 );
-$application->configure();
+$wpApplication->configure();
 
 

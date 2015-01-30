@@ -3,6 +3,8 @@
 namespace AdamQuaile\Medic;
 
 use AdamQuaile\Medic\Constants\ConstantManager;
+use AdamQuaile\Medic\Extensions\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class Application
 {
@@ -11,32 +13,61 @@ class Application
      * @var ConstantManager
      */
     private $constants;
+    private $config;
+    private $container;
 
     public function __construct(ConstantManager $constants, $config, $wpDir)
     {
         $this->wpDir = $wpDir;
         $this->constants = $constants;
+        $this->config = $config;
+
+        $this->container = new ContainerBuilder();
+        $this->buildCoreServices();
+
+    }
+
+    public function setup()
+    {
+        $this->registerExtensions();
+        $this->registerHooks();
+    }
+
+    private function buildCoreServices()
+    {
+        $container = $this->container;
+        $container
+            ->register('wordpress.hook_manager', 'AdamQuaile\Medic\Bridge\Wordpress\Hooks\HookManager');
+    }
+
+    private function registerExtensions()
+    {
+        foreach ($this->config['wordpress']['extensions'] as $className) {
+            /**
+             * @var Extension $extension
+             */
+            $extension = new $className;
+            $extension->build($this->container);
+        }
+    }
+
+    private function registerHooks()
+    {
+        $this->container->get('wordpress.hook_manager')->registerHooks();
     }
 
     public function configure()
     {
-        // ** MySQL settings - You can get this info from your web host ** //
-        /** The name of the database for WordPress */
-        $this->constants->set('DB_NAME', 'wordpress');
+        $this->constants->set(
+            'WP_CONTENT_DIR',
+            $this->wpDir . DIRECTORY_SEPARATOR . $this->config['wordpress']['structure']['content']
+        );
 
-        /** MySQL database username */
-        $this->constants->set('DB_USER', 'root');
-
-        /** MySQL database password */
-        $this->constants->set('DB_PASSWORD', '');
-
-        /** MySQL hostname */
-        $this->constants->set('DB_HOST', '127.0.0.1');
-
-        /** Database Charset to use in creating database tables. */
+        $this->constants->set('DB_NAME', $this->config['wordpress']['database']['name']);
+        $this->constants->set('DB_USER', $this->config['wordpress']['database']['user']);
+        $this->constants->set('DB_PASSWORD', $this->config['wordpress']['database']['password']);
+        $this->constants->set('DB_HOST', $this->config['wordpress']['database']['host']);
         $this->constants->set('DB_CHARSET', 'utf8');
-
-        /** The Database Collate type. Don't change this if in doubt. */
         $this->constants->set('DB_COLLATE', '');
 
         /**#@+

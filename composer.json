@@ -8,7 +8,8 @@
     },
     "autoload": {
         "psr-0": {
-            "AdamQuaile\\Medic\\": "src/"
+            "AdamQuaile\\Medic\\": "src/",
+            "Acme": "src"
         }
     },
     "authors": [

@@ -1,6 +1,11 @@
 wordpress:
+    structure:
+        content: app
+        wordpress: wordpress
     database:
         host: 127.0.0.1
         user: root
         password: ~
         name: wordpress
+    extensions:
+        - Acme\Extensions\HelloWorld\HelloWorldExtension

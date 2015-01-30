@@ -1,0 +1,5 @@
+services:
+    acme.hello_world.admin_configurator:
+        class: Acme\Extensions\HelloWorld\Admin\Configurator
+        arguments:
+            - @wordpress.hook_manager
