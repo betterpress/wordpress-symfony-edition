@@ -1,6 +1,6 @@
 # Wordpress Symfony Edition
 
-*Warning: This is pre-alpha, proof of concept stuff*
+**Warning: This is pre-alpha, proof of concept stuff**
 
 Wordpress, done the Symfony way.
 
