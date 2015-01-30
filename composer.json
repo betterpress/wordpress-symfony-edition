@@ -1,7 +1,15 @@
 {
     "name": "adamquaile/wp-medic",
     "require": {
-        "johnpbloch/wordpress": "~4.1"
+        "johnpbloch/wordpress": "~4.1",
+        "symfony/dependency-injection": "~2.6",
+        "symfony/yaml": "~2.6",
+        "symfony/config": "~2.6"
+    },
+    "autoload": {
+        "psr-0": {
+            "AdamQuaile\\Medic\\": "src/"
+        }
     },
     "authors": [
         {
