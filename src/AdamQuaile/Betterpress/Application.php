@@ -1,9 +1,9 @@
 <?php
 
-namespace AdamQuaile\Medic;
+namespace AdamQuaile\Betterpress;
 
-use AdamQuaile\Medic\Constants\ConstantManager;
-use AdamQuaile\Medic\Extensions\Extension;
+use AdamQuaile\Betterpress\Constants\ConstantManager;
+use AdamQuaile\Betterpress\Extensions\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class Application
@@ -37,7 +37,7 @@ class Application
     {
         $container = $this->container;
         $container
-            ->register('wordpress.hook_manager', 'AdamQuaile\Medic\Bridge\Wordpress\Hooks\HookManager');
+            ->register('wordpress.hook_manager', 'AdamQuaile\Betterpress\Bridge\Wordpress\Hooks\HookManager');
     }
 
     private function registerExtensions()

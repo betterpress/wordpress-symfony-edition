@@ -1,6 +1,6 @@
 <?php
 
-namespace AdamQuaile\Medic\Constants\Exceptions;
+namespace AdamQuaile\Betterpress\Constants\Exceptions;
 
 class ConstantAlreadyDefined extends \RuntimeException
 {

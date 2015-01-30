@@ -1,10 +1,10 @@
 <?php
 
-namespace AdamQuaile\Medic\Bridge\Php\Constants;
+namespace AdamQuaile\Betterpress\Bridge\Php\Constants;
 
-use AdamQuaile\Medic\Constants\ConstantManager;
-use AdamQuaile\Medic\Constants\Exceptions\ConstantAlreadyDefined;
-use AdamQuaile\Medic\Constants\Exceptions\ConstantNotDefined;
+use AdamQuaile\Betterpress\Constants\ConstantManager;
+use AdamQuaile\Betterpress\Constants\Exceptions\ConstantAlreadyDefined;
+use AdamQuaile\Betterpress\Constants\Exceptions\ConstantNotDefined;
 
 class PhpConstantManager implements ConstantManager
 {

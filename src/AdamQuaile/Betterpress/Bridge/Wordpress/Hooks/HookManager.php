@@ -1,6 +1,6 @@
 <?php
 
-namespace AdamQuaile\Medic\Bridge\Wordpress\Hooks;
+namespace AdamQuaile\Betterpress\Bridge\Wordpress\Hooks;
 
 class HookManager
 {

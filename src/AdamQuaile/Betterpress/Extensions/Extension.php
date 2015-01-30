@@ -1,8 +1,8 @@
 <?php
 
-namespace AdamQuaile\Medic\Extensions;
+namespace AdamQuaile\Betterpress\Extensions;
 
-use AdamQuaile\Medic\Application;
+use AdamQuaile\Betterpress\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 interface Extension

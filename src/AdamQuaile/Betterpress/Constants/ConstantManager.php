@@ -1,6 +1,6 @@
 <?php
 
-namespace AdamQuaile\Medic\Constants;
+namespace AdamQuaile\Betterpress\Constants;
 
 interface ConstantManager
 {

@@ -2,8 +2,8 @@
 
 namespace Acme\Extensions\HelloWorld;
 
-use AdamQuaile\Medic\Application;
-use AdamQuaile\Medic\Extensions\Extension;
+use AdamQuaile\Betterpress\Application;
+use AdamQuaile\Betterpress\Extensions\Extension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
