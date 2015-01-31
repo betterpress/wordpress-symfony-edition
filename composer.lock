@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2b0caef9559772578f7df2063d12a67f",
+    "hash": "8fe3da4382a4556f8d551f522e41b975",
     "packages": [
         {
             "name": "adamquaile/php-global-abstraction",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adamquaile/php-global-abstraction.git",
-                "reference": "25aad022416df3b7d8add8b79bfd4db3439c6f96"
+                "reference": "2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/25aad022416df3b7d8add8b79bfd4db3439c6f96",
-                "reference": "25aad022416df3b7d8add8b79bfd4db3439c6f96",
+                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782",
+                "reference": "2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,7 @@
                 }
             ],
             "description": "Wrapper around features of PHP which affect global scope",
-            "time": "2015-01-30 23:10:39"
+            "time": "2015-01-31 23:33:35"
         },
         {
             "name": "johnpbloch/wordpress",

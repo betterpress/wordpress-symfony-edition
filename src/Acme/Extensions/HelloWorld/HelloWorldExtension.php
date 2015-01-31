@@ -14,10 +14,6 @@ class HelloWorldExtension implements Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
         $loader->load('config/services.yml');
-
-        $container->get('wordpress.hook_manager')->add('admin_menu', function() {
-            \add_options_page( 'My Plugin', 'My Plugin', 'manage_options', 'my-plugin', function() {return 'Hello!';} );
-        });
     }
 
 

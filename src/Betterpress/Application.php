@@ -2,7 +2,6 @@
 
 namespace Betterpress;
 
-use AdamQuaile\PhpGlobal\Constants\ConstantWrapper;
 use Betterpress\Extensions\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -19,23 +18,42 @@ class Application
 
         $this->container = new ContainerBuilder();
         $this->buildCoreServices();
+        $this->registerExtensions();
 
     }
 
     public function setup()
     {
-        $this->registerExtensions();
+        // Move all to framework extension and event_listener hook
         $this->registerHooks();
+        $this->registerShortcodes();
+    }
+
+    private function registerShortcodes()
+    {
+        $shortcodeManager = $this->container->get('wordpress.shortcode_manager');
+        foreach ($this->container->findTaggedServiceIds('wordpress.shortcode') as $service => $tags) {
+            $shortcodeManager->add($this->container->get($service));
+        }
+        $shortcodeManager->registerShortcodes();
     }
 
     private function buildCoreServices()
     {
         $container = $this->container;
+
+        $container
+            ->register('php.globals.constants', 'AdamQuaile\PhpGlobal\Constants\ConstantWrapper');
+
+        $container
+            ->register('php.globals.functions', 'AdamQuaile\PhpGlobal\Functions\FunctionWrapper');
+
         $container
             ->register('wordpress.hook_manager', 'Betterpress\Bridge\Wordpress\Hooks\HookManager');
 
         $container
-            ->register('php.globals.constants', 'AdamQuaile\PhpGlobal\Constants\ConstantWrapper');
+            ->register('wordpress.shortcode_manager', 'Betterpress\Shortcode\ShortcodeManager')
+            ->addArgument($container->getDefinition('php.globals.functions'));
     }
 
     private function registerExtensions()
@@ -51,6 +69,7 @@ class Application
 
     private function registerHooks()
     {
+        $this->container->get('wordpress.hook_manager')->loadFromContainer($this->container);
         $this->container->get('wordpress.hook_manager')->registerHooks();
     }
 

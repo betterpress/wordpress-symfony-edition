@@ -1,5 +1,10 @@
 services:
     acme.hello_world.admin_configurator:
         class: Acme\Extensions\HelloWorld\Admin\Configurator
-        arguments:
-            - @wordpress.hook_manager
+        tags:
+            - { name: wordpress.hook, hook: admin_menu }
+
+    acme.hello_world.hello_shortcode:
+        class: Acme\Extensions\HelloWorld\Shortcode\HelloShortcode
+        tags:
+            - { name: wordpress.shortcode }

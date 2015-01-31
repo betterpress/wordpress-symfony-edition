@@ -28,5 +28,18 @@ Packages:
   - `php-global-abstraction`: Wrappers around PHP's features affecting global scope
   - `wordpress-adapter`: Wrappers around the basic wordpress functions, e.g. hooks, global settings
   - `wordpress-settings-api`: Wrappers around the Wordpress Settings API
+  - `wordpress-shortcode-api`: Wrappers around the Wordpress Settings API
   - `wordpress-symfony-extension`: Extension to tie all the components together
       
+
+## Why not just...
+
+### use wordpress plugins instead of extensions?
+
+We're not saying don't use plugins at all. You still can. What we're saying is that if you're serious about delivering
+a well thought out, reliable and maintainable system then bits of code which can " extend WordPress to do almost anything you can imagine"
+should be added by a developer and go through whatever quality assurance processes you have, not be added through a web 
+interface without thought or testing. 
+
+We know from experience that one of the best ways to manage code in this way is through `composer`, and a symfony-like 
+extension system which allows proper dependency injection makes for much more maintainable code. 
