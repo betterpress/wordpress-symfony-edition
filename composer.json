@@ -4,11 +4,12 @@
         "johnpbloch/wordpress": "~4.1",
         "symfony/dependency-injection": "~2.6",
         "symfony/yaml": "~2.6",
-        "symfony/config": "~2.6"
+        "symfony/config": "~2.6",
+        "adamquaile/php-global-abstraction": "~1.0"
     },
     "autoload": {
         "psr-0": {
-            "AdamQuaile\\Betterpress\\": "src/",
+            "Betterpress\\": "src/",
             "Acme": "src"
         }
     },

@@ -25,6 +25,7 @@ Tag a service in the container to run a hook, rather than `add_action` littered 
 ## Structure
 
 Packages:
+  - `php-global-abstraction`: Wrappers around PHP's features affecting global scope
   - `wordpress-adapter`: Wrappers around the basic wordpress functions, e.g. hooks, global settings
   - `wordpress-settings-api`: Wrappers around the Wordpress Settings API
   - `wordpress-symfony-extension`: Extension to tie all the components together

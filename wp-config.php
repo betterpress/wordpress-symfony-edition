@@ -7,8 +7,7 @@ $config = $yaml->parse(__DIR__ . '/config/parameters.yml');
 
 
 global $wpApplication;
-$wpApplication = new AdamQuaile\Betterpress\Application(
-	new \AdamQuaile\Betterpress\Bridge\Php\Constants\PhpConstantManager(),
+$wpApplication = new Betterpress\Application(
 	$config,
 	__DIR__
 );

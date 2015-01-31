@@ -1,8 +1,8 @@
 <?php
 
-namespace AdamQuaile\Betterpress\Extensions;
+namespace Betterpress\Extensions;
 
-use AdamQuaile\Betterpress\Application;
+use Betterpress\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 interface Extension

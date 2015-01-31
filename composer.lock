@@ -4,8 +4,48 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a646445ea20e15b4fc5013f37e25e179",
+    "hash": "2b0caef9559772578f7df2063d12a67f",
     "packages": [
+        {
+            "name": "adamquaile/php-global-abstraction",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adamquaile/php-global-abstraction.git",
+                "reference": "25aad022416df3b7d8add8b79bfd4db3439c6f96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/25aad022416df3b7d8add8b79bfd4db3439c6f96",
+                "reference": "25aad022416df3b7d8add8b79bfd4db3439c6f96",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AdamQuaile\\PhpGlobal\\Tests\\": "tests",
+                    "AdamQuaile\\PhpGlobal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Quaile",
+                    "email": "adamquaile@gmail.com"
+                }
+            ],
+            "description": "Wrapper around features of PHP which affect global scope",
+            "time": "2015-01-30 23:10:39"
+        },
         {
             "name": "johnpbloch/wordpress",
             "version": "4.1",
