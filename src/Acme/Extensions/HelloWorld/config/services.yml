@@ -2,7 +2,7 @@ services:
     acme.hello_world.admin_configurator:
         class: Acme\Extensions\HelloWorld\Admin\Configurator
         tags:
-            - { name: wordpress.hook, hook: admin_menu }
+            - { name: wordpress.hook, hook: admin_menu, type: action }
 
     acme.hello_world.hello_shortcode:
         class: Acme\Extensions\HelloWorld\Shortcode\HelloShortcode

@@ -11,21 +11,27 @@ class Application
     private $config;
     private $container;
 
+    /**
+     * @var Extension[]
+     */
+    private $extensions = [];
+
     public function __construct($config, $wpDir)
     {
         $this->wpDir = $wpDir;
         $this->config = $config;
 
         $this->container = new ContainerBuilder();
-        $this->buildCoreServices();
         $this->registerExtensions();
 
     }
 
     public function setup()
     {
+        foreach ($this->extensions as $extension) {
+            $extension->setup($this, $this->container);
+        }
         // Move all to framework extension and event_listener hook
-        $this->registerHooks();
         $this->registerShortcodes();
     }
 
@@ -38,39 +44,15 @@ class Application
         $shortcodeManager->registerShortcodes();
     }
 
-    private function buildCoreServices()
-    {
-        $container = $this->container;
-
-        $container
-            ->register('php.globals.constants', 'AdamQuaile\PhpGlobal\Constants\ConstantWrapper');
-
-        $container
-            ->register('php.globals.functions', 'AdamQuaile\PhpGlobal\Functions\FunctionWrapper');
-
-        $container
-            ->register('wordpress.hook_manager', 'Betterpress\Bridge\Wordpress\Hooks\HookManager');
-
-        $container
-            ->register('wordpress.shortcode_manager', 'Betterpress\Shortcode\ShortcodeManager')
-            ->addArgument($container->getDefinition('php.globals.functions'));
-    }
-
     private function registerExtensions()
     {
         foreach ($this->config['wordpress']['extensions'] as $className) {
             /**
              * @var Extension $extension
              */
-            $extension = new $className;
+            $this->extensions[] = $extension = new $className;
             $extension->build($this->container);
         }
-    }
-
-    private function registerHooks()
-    {
-        $this->container->get('wordpress.hook_manager')->loadFromContainer($this->container);
-        $this->container->get('wordpress.hook_manager')->registerHooks();
     }
 
     public function configure()

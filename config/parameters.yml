@@ -8,4 +8,5 @@ wordpress:
         password: ~
         name: wordpress
     extensions:
+        - Betterpress\Extensions\BetterpressFramework\BetterpressFrameworkExtension
         - Acme\Extensions\HelloWorld\HelloWorldExtension

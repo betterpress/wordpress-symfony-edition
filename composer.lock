@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8fe3da4382a4556f8d551f522e41b975",
+    "hash": "0d13ac5b7ed3057083808d9fa04b21cb",
     "packages": [
         {
             "name": "adamquaile/php-global-abstraction",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adamquaile/php-global-abstraction.git",
-                "reference": "2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782"
+                "reference": "b737bd7294631acf248c8233e82b4b02d6b2a7b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782",
-                "reference": "2fc4afe72e1b9c65e8afbdf8f2cb88c465cca782",
+                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/b737bd7294631acf248c8233e82b4b02d6b2a7b2",
+                "reference": "b737bd7294631acf248c8233e82b4b02d6b2a7b2",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,44 @@
                 }
             ],
             "description": "Wrapper around features of PHP which affect global scope",
-            "time": "2015-01-31 23:33:35"
+            "time": "2015-02-01 12:24:04"
+        },
+        {
+            "name": "betterpress/wordpress-adapter",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/betterpress/wordpress-adapter.git",
+                "reference": "05420f6402f44c1e31863da4ded81172c97cacf1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/betterpress/wordpress-adapter/zipball/05420f6402f44c1e31863da4ded81172c97cacf1",
+                "reference": "05420f6402f44c1e31863da4ded81172c97cacf1",
+                "shasum": ""
+            },
+            "require": {
+                "adamquaile/php-global-abstraction": "~1.1",
+                "php": ">= 5.4"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Betterpress\\Wordpress\\Adapter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Adam Quaile",
+                    "email": "adamquaile@gmail.com"
+                }
+            ],
+            "description": "OO adapters/wrappers around low-level wordpress functions",
+            "time": "2015-02-01 15:35:36"
         },
         {
             "name": "johnpbloch/wordpress",

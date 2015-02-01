@@ -2,6 +2,7 @@
 
 namespace Acme\Extensions\HelloWorld;
 
+use Betterpress\Application;
 use Betterpress\Extensions\Extension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,6 +15,11 @@ class HelloWorldExtension implements Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
         $loader->load('config/services.yml');
+    }
+
+    public function setup(Application $application, ContainerBuilder $container)
+    {
+
     }
 
 
