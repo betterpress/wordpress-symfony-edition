@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0d13ac5b7ed3057083808d9fa04b21cb",
+    "hash": "ec5b782d074b0fc1bfc2e540feb540e3",
     "packages": [
         {
             "name": "adamquaile/php-global-abstraction",
-            "version": "v1.2.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adamquaile/php-global-abstraction.git",
-                "reference": "b737bd7294631acf248c8233e82b4b02d6b2a7b2"
+                "reference": "9a0822099e0acfef27a28d6894cdf7fb4ebe7c7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/b737bd7294631acf248c8233e82b4b02d6b2a7b2",
-                "reference": "b737bd7294631acf248c8233e82b4b02d6b2a7b2",
+                "url": "https://api.github.com/repos/adamquaile/php-global-abstraction/zipball/9a0822099e0acfef27a28d6894cdf7fb4ebe7c7f",
+                "reference": "9a0822099e0acfef27a28d6894cdf7fb4ebe7c7f",
                 "shasum": ""
             },
             "require": {
@@ -44,24 +44,24 @@
                 }
             ],
             "description": "Wrapper around features of PHP which affect global scope",
-            "time": "2015-02-01 12:24:04"
+            "time": "2015-02-04 16:57:12"
         },
         {
             "name": "betterpress/wordpress-adapter",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/betterpress/wordpress-adapter.git",
-                "reference": "05420f6402f44c1e31863da4ded81172c97cacf1"
+                "reference": "fbab9c614d148146ddb53bd78214ae6463969edd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/betterpress/wordpress-adapter/zipball/05420f6402f44c1e31863da4ded81172c97cacf1",
-                "reference": "05420f6402f44c1e31863da4ded81172c97cacf1",
+                "url": "https://api.github.com/repos/betterpress/wordpress-adapter/zipball/fbab9c614d148146ddb53bd78214ae6463969edd",
+                "reference": "fbab9c614d148146ddb53bd78214ae6463969edd",
                 "shasum": ""
             },
             "require": {
-                "adamquaile/php-global-abstraction": "~1.1",
+                "adamquaile/php-global-abstraction": "~2.0",
                 "php": ">= 5.4"
             },
             "require-dev": {
@@ -81,7 +81,44 @@
                 }
             ],
             "description": "OO adapters/wrappers around low-level wordpress functions",
-            "time": "2015-02-01 15:35:36"
+            "time": "2015-02-04 17:11:29"
+        },
+        {
+            "name": "betterpress/wordpress-dashboard-widgets",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/betterpress/wordpress-dashboard-widgets.git",
+                "reference": "983527f4a8f6c343fb09a2704c8d2e92c1b2d7f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/betterpress/wordpress-dashboard-widgets/zipball/983527f4a8f6c343fb09a2704c8d2e92c1b2d7f5",
+                "reference": "983527f4a8f6c343fb09a2704c8d2e92c1b2d7f5",
+                "shasum": ""
+            },
+            "require": {
+                "adamquaile/php-global-abstraction": "~2.0",
+                "betterpress/wordpress-adapter": "~1.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Betterpress\\Wordpress\\DashboardWidgets\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Adam Quaile",
+                    "email": "adamquaile@gmail.com"
+                }
+            ],
+            "description": "Wordpress Dashboard Widgets API",
+            "time": "2015-02-06 20:03:26"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -167,17 +204,17 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Config",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "d94f222eff99a22ce313555b78642b4873418d56"
+                "reference": "a9f781ba1221067d1f07c8cec0bc50f81b8d7408"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/d94f222eff99a22ce313555b78642b4873418d56",
-                "reference": "d94f222eff99a22ce313555b78642b4873418d56",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/a9f781ba1221067d1f07c8cec0bc50f81b8d7408",
+                "reference": "a9f781ba1221067d1f07c8cec0bc50f81b8d7408",
                 "shasum": ""
             },
             "require": {
@@ -211,21 +248,21 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 08:01:59"
+            "time": "2015-01-21 20:57:55"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/DependencyInjection",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "72db9adf2f6c42e773108038bcdaff263f325b4e"
+                "reference": "42bbb43fab66292a1865dc9616c299904c3d4d14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/72db9adf2f6c42e773108038bcdaff263f325b4e",
-                "reference": "72db9adf2f6c42e773108038bcdaff263f325b4e",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/42bbb43fab66292a1865dc9616c299904c3d4d14",
+                "reference": "42bbb43fab66292a1865dc9616c299904c3d4d14",
                 "shasum": ""
             },
             "require": {
@@ -271,11 +308,11 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-05 17:41:06"
+            "time": "2015-01-25 04:39:26"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
@@ -322,17 +359,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "82462a90848a52c2533aa6b598b107d68076b018"
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/82462a90848a52c2533aa6b598b107d68076b018",
-                "reference": "82462a90848a52c2533aa6b598b107d68076b018",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/60ed7751671113cf1ee7d7778e691642c2e9acd8",
+                "reference": "60ed7751671113cf1ee7d7778e691642c2e9acd8",
                 "shasum": ""
             },
             "require": {
@@ -365,13 +402,15 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 15:33:07"
+            "time": "2015-01-25 04:39:26"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "betterpress/wordpress-dashboard-widgets": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

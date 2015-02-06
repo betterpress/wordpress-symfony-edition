@@ -22,6 +22,7 @@ class Application
         $this->config = $config;
 
         $this->container = new ContainerBuilder();
+        $this->container->set('container', $this->container);
         $this->registerExtensions();
 
     }
@@ -37,11 +38,6 @@ class Application
 
     private function registerShortcodes()
     {
-        $shortcodeManager = $this->container->get('wordpress.shortcode_manager');
-        foreach ($this->container->findTaggedServiceIds('wordpress.shortcode') as $service => $tags) {
-            $shortcodeManager->add($this->container->get($service));
-        }
-        $shortcodeManager->registerShortcodes();
     }
 
     private function registerExtensions()

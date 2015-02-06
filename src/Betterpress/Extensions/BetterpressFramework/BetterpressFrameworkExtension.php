@@ -7,32 +7,35 @@ use Betterpress\Extensions\Extension;
 use Betterpress\Wordpress\Adapter\Hooks\Hook;
 use Betterpress\Wordpress\Adapter\Hooks\HookConfiguration;
 use Betterpress\Wordpress\Adapter\Hooks\HookManager;
+use Betterpress\Wordpress\DashboardWidgets\Widget;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class BetterPressFrameworkExtension implements Extension
 {
 
     public function build(ContainerBuilder $container)
     {
-        $container
-            ->register('php.globals.constants', 'AdamQuaile\PhpGlobal\Constants\ConstantWrapper');
-
-        $container
-            ->register('php.globals.functions', 'AdamQuaile\PhpGlobal\Functions\FunctionWrapper');
-
-        $container
-            ->register('wordpress.hooks.hook_manager', 'Betterpress\Wordpress\Adapter\Hooks\HookManager')
-            ->addArgument($container->getDefinition('php.globals.functions'));
-
-        $container
-            ->register('wordpress.shortcode_manager', 'Betterpress\Shortcode\ShortcodeManager')
-            ->addArgument($container->getDefinition('php.globals.functions'));
-
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
+        $loader->load('config/services.yml');
     }
 
     public function setup(Application $application, ContainerBuilder $container)
     {
         $this->registerHooks($container);
+        $this->registerShortcodes($container);
+    }
+
+
+    private function registerShortcodes(ContainerBuilder $container)
+    {
+        $shortcodeManager = $container->get('wordpress.shortcode_manager');
+        foreach ($container->findTaggedServiceIds('wordpress.shortcode') as $service => $tags) {
+            $shortcodeManager->add($container->get($service));
+        }
+        $shortcodeManager->registerShortcodes();
+
     }
 
     private function registerHooks(ContainerBuilder $container)

@@ -8,3 +8,8 @@ services:
         class: Acme\Extensions\HelloWorld\Shortcode\HelloShortcode
         tags:
             - { name: wordpress.shortcode }
+
+    acme.hello_world.hello_widget:
+        class: Acme\Extensions\HelloWorld\Admin\Dashboard\HelloWidget
+        tags:
+            - { name: wordpress.dashboard.widget }

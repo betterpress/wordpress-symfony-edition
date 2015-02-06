@@ -1,0 +1,33 @@
+services:
+    php.globals.constants:
+        class: AdamQuaile\PhpGlobal\Constants\ConstantWrapper
+    php.globals.functions.creator:
+        class: AdamQuaile\PhpGlobal\Functions\FunctionCreator
+    php.globals.functions.invoker:
+        class: AdamQuaile\PhpGlobal\Functions\FunctionInvoker
+    php.globals.functions.wrapper:
+        class: AdamQuaile\PhpGlobal\Functions\FunctionWrapper
+        arguments:
+            - @php.globals.functions.creator
+            - @php.globals.functions.invoker
+
+    wordpress.hooks.hook_manager:
+        class: Betterpress\Wordpress\Adapter\Hooks\HookManager
+        arguments:
+            - @php.globals.functions.wrapper
+    wordpress.shortcode_manager:
+        class: Betterpress\Shortcode\ShortcodeManager
+        arguments:
+            - @php.globals.functions.wrapper
+
+    wordpress.dashboard.dashboard:
+        class: Betterpress\Wordpress\DashboardWidgets\Dashboard
+        arguments:
+            - @php.globals.functions.wrapper
+
+    betterpress.setup.hooks.modify_dashboard:
+        class: Betterpress\Extensions\BetterpressFramework\Setup\Hooks\ModifyDashboardHook
+        arguments:
+            - @container
+        tags:
+            - { name: wordpress.hook, hook: wp_dashboard_setup, type: action }
