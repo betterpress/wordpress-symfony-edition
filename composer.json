@@ -1,5 +1,5 @@
 {
-    "name": "adamquaile/wp-medic",
+    "name": "betterpress/wordpress-symfony-edition",
     "require": {
         "johnpbloch/wordpress": "~4.1",
         "incenteev/composer-parameter-handler": "~2.0",

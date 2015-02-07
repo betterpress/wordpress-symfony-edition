@@ -5,7 +5,13 @@
 Wordpress, done the Symfony way.
 
 Wordpress is a great, easy to use platform for content editing, but it's not without its flaws. This project aims to
-fix some of those issues. It is inspired by and uses components from the symfony world.
+fix some of those issues. It is inspired by and uses components from the symfony world and roughly matches the structure
+of [`symfony/framework-standard-edition`](https://github.com/symfony/symfony-standard).
+
+## Installation
+
+`composer create-project betterpress/wordpress-symfony-edition "*@dev"`. You will be asked for database parameters - this
+database must already exist and be accessible. 
 
 ## Features
 
@@ -34,7 +40,7 @@ Packages:
 
 ## Why not just...
 
-### use wordpress plugins instead of extensions?
+### use wordpress plugins instead of bundles?
 
 We're not saying don't use plugins at all. You still can. What we're saying is that if you're serious about delivering
 a well thought out, reliable and maintainable system then bits of code which can " extend WordPress to do almost anything you can imagine"
