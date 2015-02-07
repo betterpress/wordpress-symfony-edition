@@ -1,0 +1,13 @@
+imports:
+    - { resource: parameters.yml }
+
+wordpress:
+    structure:
+        content: app
+        wordpress: wordpress
+    database:
+        host: %database_host%
+        user: %database_user%
+        password: %database_password%
+        name: %database_name%
+hello_world: ~

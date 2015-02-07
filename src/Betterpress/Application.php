@@ -2,28 +2,37 @@
 
 namespace Betterpress;
 
+use Betterpress\Extensions\BetterpressBundle;
 use Betterpress\Extensions\Extension;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Betterpress\Extensions\BetterpressFramework\DependencyInjection\Config\Extension as ContainerExtension;
+use Symfony\Component\Yaml\Yaml;
 
-class Application
+abstract class Application
 {
     private $wpDir;
     private $config;
     private $container;
 
     /**
-     * @var Extension[]
+     * @var BetterpressBundle[]
      */
     private $extensions = [];
 
-    public function __construct($config, $wpDir)
+    public function __construct($wpDir)
     {
         $this->wpDir = $wpDir;
-        $this->config = $config;
 
         $this->container = new ContainerBuilder();
         $this->container->set('container', $this->container);
         $this->registerExtensions();
+
+        $yamlLoader = new YamlFileLoader($this->container, new FileLocator([$wpDir.'/app/config']));
+        $yamlLoader->load('config.yml');
+
+        $this->container->compile();
 
     }
 
@@ -32,38 +41,40 @@ class Application
         foreach ($this->extensions as $extension) {
             $extension->setup($this, $this->container);
         }
-        // Move all to framework extension and event_listener hook
-        $this->registerShortcodes();
     }
 
-    private function registerShortcodes()
-    {
-    }
+
+    /**
+     * @return BetterpressBundle[]
+     */
+
+    abstract public function getExtensions();
 
     private function registerExtensions()
     {
-        foreach ($this->config['wordpress']['extensions'] as $className) {
-            /**
-             * @var Extension $extension
-             */
-            $this->extensions[] = $extension = new $className;
+        foreach ($this->getExtensions() as $extension) {
+            $this->extensions[] = $extension;
+            $this->container->registerExtension($extension->getContainerExtension());
+        }
+        foreach ($this->extensions as $extension) {
             $extension->build($this->container);
         }
     }
 
     public function configure()
     {
+
         $constants = $this->container->get('php.globals.constants');
 
         $constants->set(
             'WP_CONTENT_DIR',
-            $this->wpDir . DIRECTORY_SEPARATOR . $this->config['wordpress']['structure']['content']
+            $this->wpDir . DIRECTORY_SEPARATOR . $this->container->getParameter('wordpress.structure.content')
         );
 
-        $constants->set('DB_NAME', $this->config['wordpress']['database']['name']);
-        $constants->set('DB_USER', $this->config['wordpress']['database']['user']);
-        $constants->set('DB_PASSWORD', $this->config['wordpress']['database']['password']);
-        $constants->set('DB_HOST', $this->config['wordpress']['database']['host']);
+        $constants->set('DB_NAME',      $this->container->getParameter('wordpress.database.name'));
+        $constants->set('DB_USER',      $this->container->getParameter('wordpress.database.user'));
+        $constants->set('DB_PASSWORD',  $this->container->getParameter('wordpress.database.password'));
+        $constants->set('DB_HOST',      $this->container->getParameter('wordpress.database.host'));
         $constants->set('DB_CHARSET', 'utf8');
         $constants->set('DB_COLLATE', '');
 

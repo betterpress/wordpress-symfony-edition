@@ -25,7 +25,9 @@ class ModifyDashboardHook implements Hook
 
     private function registerDashboardWidgets(ContainerBuilder $container)
     {
+        // TODO: Split registration and assignment through hook into parts
         $dashboard = $container->get('wordpress.dashboard.dashboard');
+
         foreach ($container->findTaggedServiceIds('wordpress.dashboard.widget') as $id => $info) {
 
             $service = $container->get($id);

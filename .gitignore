@@ -1,2 +1,4 @@
 /vendor/
 /wordpress/
+/app/config/parameters.yml
+
