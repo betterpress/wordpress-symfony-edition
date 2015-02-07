@@ -10,8 +10,16 @@ of [`symfony/framework-standard-edition`](https://github.com/symfony/symfony-sta
 
 ## Installation
 
-`composer create-project betterpress/wordpress-symfony-edition "*@dev"`. You will be asked for database parameters - this
+`composer create-project betterpress/wordpress-symfony-edition --stability=dev`. You will be asked for database parameters - this
 database must already exist and be accessible. 
+
+Next setup your web server, with a document root of the folder `./wordpress`. Composer has created this folder for you. If you're 
+just trying it out, you can run the PHP server locally (make sure you run from inside your project directory):
+
+`php -S 0.0.0.0:8081 -t ./wordpress`
+
+If the database details you have given are for an empty database, now visit your site and you should see the wordpress install screen. 
+Follow these instructions, and you'll be ready to go. 
 
 ## Features
 
@@ -28,15 +36,6 @@ own classes.
 
 Tag a service in the container to run a hook, rather than `add_action` littered all over the place.
 
-## Structure
-
-Packages:
-  - `php-global-abstraction`: Wrappers around PHP's features affecting global scope
-  - `wordpress-adapter`: Wrappers around the basic wordpress functions, e.g. hooks, global settings
-  - `wordpress-settings-api`: Wrappers around the Wordpress Settings API
-  - `wordpress-shortcode-api`: Wrappers around the Wordpress Settings API
-  - `wordpress-symfony-extension`: Extension to tie all the components together
-      
 
 ## Why not just...
 
@@ -49,3 +48,24 @@ interface without thought or testing.
 
 We know from experience that one of the best ways to manage code in this way is through `composer`, and a symfony-like 
 extension system which allows proper dependency injection makes for much more maintainable code. 
+
+## Development
+
+### Where are the tests?
+
+Directly in this project, there aren't any. A lot of this code is experimental and not developed test-first. As it evolves 
+and I get an idea of how the parts should interact, I extract them into separate repositories with proper tests. 
+See [`betterpress/wordpress-adapter`](https://github.com/betterpress/wordpress-adapter) for example. 
+
+### Structure
+
+This section is more of a note and this is changing a lot. See `composer.json` for the current struture. 
+
+Packages:
+
+  - `adamquaile/php-global-abstraction`: Wrappers around PHP's features affecting global scope
+  - `betterpress/wordpress-adapter`: Wrappers around the basic wordpress functions, e.g. hooks, global settings
+  - `betterpress/wordpress-settings-api`: Wrappers around the Wordpress Settings API
+  - `betterpress/wordpress-shortcode-api`: Wrappers around the Wordpress Settings API
+  - `betterpress/wordpress-symfony-extension`: Extension to tie all the components together
+      

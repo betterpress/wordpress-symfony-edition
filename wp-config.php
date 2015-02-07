@@ -1,19 +1,19 @@
 <?php
 
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+/*
+ * Config / bootstrap file
+ *
+ * Wordpress searches for wp-config.php in its own directory and
+ * one level above. Here we setup all the configuration values
+ * as per http://codex.wordpress.org/Editing_wp-config.php but we
+ * move this configuration to YAML files in app/config
+ */
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/app/Application.php';
 
-//$yaml = new \Symfony\Component\Yaml\Yaml();
-//$config = $yaml->parse(__DIR__ . '/app/config/config.yml');
-
-
 global $wpApplication;
-$wpApplication = new Application(
-//	$config,
-	__DIR__
-);
+$wpApplication = new Application(__DIR__);
 $wpApplication->configure();
 
 
