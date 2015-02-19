@@ -113,7 +113,7 @@ abstract class Application
          * It is strongly recommended that plugin and theme developers use WP_DEBUG
          * in their development environments.
          */
-        $constants->set('WP_DEBUG', false);
+        $constants->set('WP_DEBUG', $this->container->getParameter('debug'));
 
         /* That's all, stop editing! Happy blogging. */
 
